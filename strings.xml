@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Search Page</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back_button">← Back</string>
+    <string name="city_name">City Name</string>
+    <string name="temperature_celcius">temperature</string>
+    <string name="add_to_favourites">Add Current City to Favourites</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="weather_details">Weather Details</string>
+    <string name="app_title">Elite Weather</string>
+    <string name="favourite_cities_button">Favourite Cities</string>
+    <string name="menu_button">≡</string>
+    <string name="menu_options">Options</string>
+    <string name="favourites_title">Favourites</string>
+    <string name="search_button">Search</string>
+</resources>
