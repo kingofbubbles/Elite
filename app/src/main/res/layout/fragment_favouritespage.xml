@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".favouritespage">
+
+    <!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:text="@string/hello_blank_fragment" />-->
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="94dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/back_button"
+        android:textAlignment="viewStart"
+        android:textColor="#3F51B5"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="94dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="315dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="2dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/menu_button"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/favouritesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="77dp"
+        android:text="@string/favourites_title"
+        android:textColor="#3F51B5"
+        android:textSize="60sp" />
+
+    <LinearLayout
+        android:id="@+id/favouritesList"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="183dp"
+        android:layout_marginBottom="-1dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/firstFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/secondFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/thirdFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/fourthFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/fifthFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/sixthFavourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button" />
+    </LinearLayout>
+
+</RelativeLayout>
