@@ -59,8 +59,8 @@
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="313dp"
         android:ems="10"
+        android:hint="@string/search_button_hint"
         android:inputType="textPersonName"
-        android:text="Enter City Name"
         android:textSize="24sp" />
 
     <Button
@@ -69,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="266dp"
+        android:layout_marginBottom="256dp"
+        android:onClick="sendMessage"
         android:text="@string/search_button" />
 </RelativeLayout>

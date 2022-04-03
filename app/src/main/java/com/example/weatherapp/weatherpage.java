@@ -1,64 +1,78 @@
 package com.example.weatherapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
+import android.os.StrictMode;
+import android.widget.TextView;
 
-///**
-// * A simple {@link Fragment} subclass.
-// * Use the {@link weatherpage#newInstance} factory method to
-// * create an instance of this fragment.
-// */
-public class weatherpage extends Fragment {
+import androidx.appcompat.app.AppCompatActivity;
 
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//
-//    public weatherpage() {
-//        // Required empty public constructor
-//    }
-//
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment weatherpage.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static weatherpage newInstance(String param1, String param2) {
-//        weatherpage fragment = new weatherpage();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
+
+public class weatherpage extends AppCompatActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weatherpage, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_weatherpage);
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(searchpage.EXTRA_MESSAGE);
+
+        // Capture the layout's TextView and set the string as its text
+        TextView textView = findViewById(R.id.cityName);
+        textView.setText(message);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
+        Thread thread = new Thread(new Runnable() {
+            public void run() {
+                try  {
+                    api openWeather = new api();
+                    openWeather.geoCode(message);
+                    openWeather.openWeather();
+                    TextView currentTemp = (TextView) findViewById(R.id.temperatureCelsius);
+                    currentTemp.setText(openWeather.getTempInfo()[0][0]);
+
+                    TextView currentFeelsLike = (TextView) findViewById(R.id.feelsLike);
+                    currentFeelsLike.setText(String.format("Feels Like: %s", openWeather.getTempInfo()[0][1]));
+
+
+                    TextView currentWeatherDetails = (TextView) findViewById(R.id.weatherDetails);
+                    currentWeatherDetails.setText(String.format("Weather Details: %s, %s", openWeather.getDescriptionInfo()[0][0], openWeather.getDescriptionInfo()[0][1]));
+
+                    TextView firstDay = (TextView) findViewById(R.id.firstDay);
+                    firstDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[1][0], openWeather.getTempInfo()[1][1], openWeather.getDescriptionInfo()[1][0], openWeather.getDescriptionInfo()[1][1]));
+
+                    TextView secondDay = (TextView) findViewById(R.id.secondDay);
+                    secondDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[2][0], openWeather.getTempInfo()[2][1], openWeather.getDescriptionInfo()[2][0], openWeather.getDescriptionInfo()[2][1]));
+
+                    TextView thirdDay = (TextView) findViewById(R.id.thirdDay);
+                    thirdDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[3][0], openWeather.getTempInfo()[3][1], openWeather.getDescriptionInfo()[3][0], openWeather.getDescriptionInfo()[3][1]));
+
+                    TextView fourthDay = (TextView) findViewById(R.id.fourthDay);
+                    fourthDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[4][0], openWeather.getTempInfo()[4][1], openWeather.getDescriptionInfo()[4][0], openWeather.getDescriptionInfo()[4][1]));
+
+                    TextView fifthDay = (TextView) findViewById(R.id.fifthDay);
+                    fifthDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[5][0], openWeather.getTempInfo()[5][1], openWeather.getDescriptionInfo()[5][0], openWeather.getDescriptionInfo()[5][1]));
+
+                    TextView sixthDay = (TextView) findViewById(R.id.sixthDay);
+                    sixthDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[6][0], openWeather.getTempInfo()[6][1], openWeather.getDescriptionInfo()[6][0], openWeather.getDescriptionInfo()[6][1]));
+
+                    TextView seventhDay = (TextView) findViewById(R.id.seventhDay);
+                    seventhDay.setText(String.format("Temp: %s, Feels Like: %s. Description: %s, %s", openWeather.getTempInfo()[7][0], openWeather.getTempInfo()[7][1], openWeather.getDescriptionInfo()[7][0], openWeather.getDescriptionInfo()[7][1]));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+
     }
 }
 

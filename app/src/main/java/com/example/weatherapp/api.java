@@ -8,19 +8,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class api {
     private float latitude;
     private float longitude;
     private String location;
-    private int[][] tempInfo;
-    private String[][] descriptionInfo;
+    private final int[][] tempInfo;
+    private final String[][] descriptionInfo;
 
 
-    private String openWeatherAPIKey;
-    private String geoCodeAPIKey;
+    private final String openWeatherAPIKey;
+    private final String geoCodeAPIKey;
     private static HttpURLConnection connection;
 
     public api() {
@@ -57,7 +56,7 @@ public class api {
         // Method 1: java.net.HttpURLConnection
         BufferedReader reader;
         String line;
-        StringBuilder responseContent = new StringBuilder();
+        StringBuffer responseContent = new StringBuffer();
         try {
             String strUrl = String.format("http://open.mapquestapi.com/geocoding/v1/address?key=%s&location=%s", this.location, this.geoCodeAPIKey);
             URL url = new URL(strUrl);
@@ -99,7 +98,7 @@ public class api {
         // Method 1: java.net.HttpURLConnection
         BufferedReader reader;
         String line;
-        StringBuilder responseContent = new StringBuilder();
+        StringBuffer responseContent = new StringBuffer();
         try {
             String strUrl = String.format("https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=hourly,daily&units=metric&appid=%s", this.latitude, this.longitude, this.openWeatherAPIKey);
             URL url = new URL(strUrl);
